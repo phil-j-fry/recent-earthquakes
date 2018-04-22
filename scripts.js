@@ -4,7 +4,7 @@ const mainApp = async() =>{
   console.log('Document loaded!')
 
   let eqData = await fetchEqData(ENDPOINT);
-  console.log('Creating elements from ' + eqData.length + ' array objects.')
+  console.log('Creating elements from ' + eqData.features.length + ' array objects.')
 
   let eqDivArray = await createElementsFromEqData(eqData.features)
   /*console.log(eqDivArray)*/
