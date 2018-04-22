@@ -3,23 +3,25 @@ const ENDPOINT = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 const mainApp = async() =>{
   console.log('Document loaded!')
 
-  let eqs = await fetchEqData(ENDPOINT);
-  console.log('Creating elements from ' + eqs.length + ' array objects.')
+  let eqData = await fetchEqData(ENDPOINT);
+  console.log('Creating elements from ' + eqData.length + ' array objects.')
 
-  let elfs = await createElementsFromEqData(eqs.features)
-  console.log(elfs)
+  let eqDivArray = await createElementsFromEqData(eqData.features)
+  /*console.log(eqDivArray)*/
 
   let eqElement = document.getElementById('the-eq-events')
   console.log('Rendering to element: #' + eqElement.id)
 
-  renderEqData(elfs, eqElement)
+  renderEqData(eqDivArray, eqElement)
+  /*console.log(eqData.features)*/
 
   console.log('All done!')
+
 }
 
 
 const fetchEqData = async(usgsUrl) => {
-  let d = []
+  let dataArray = []
   console.log('Downloading from: ' + usgsUrl)
 
   let response = await fetch(usgsUrl)
@@ -29,13 +31,13 @@ const fetchEqData = async(usgsUrl) => {
 }
 
 
-const createElementsFromEqData = async(eqArray) => {
+const createElementsFromEqData = async(eqData) => {
 	//create blank array
     let elementArray = []
 
-    //iterate through 
-    for(let i=0, alen=eqArray.length; i < alen; i++){
-        let f = eqArray[i]
+    //iterate through to find number of elements to create
+    for(let i=0, alen=eqData.length; i < alen; i++){
+        let f = eqData[i]
         
         // create HTML elements from array
         let el = document.createElement("div")
@@ -63,11 +65,11 @@ const createEqHtml = function(eq){
        </div>`
 }
 
-const renderEqData = async(elementArray, parentEl) => {
-    for(let i=0, alen=elementArray.length; i < alen; i++){
-        let el = elementArray[i]
+const renderEqData = async(eqDivArray, eqElement) => {
+    for(let i=0, alen=eqDivArray.length; i < alen; i++){
+        let el = eqDivArray[i]
         el.className = 'data-item col-sm-4'
-        parentEl.appendChild(el)
+        eqElement.appendChild(el)
     }
 }
 
