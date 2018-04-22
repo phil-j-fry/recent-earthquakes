@@ -1,10 +1,10 @@
 # Project Name
 
-Recent Earthquakes around the world (past hour)
+recent-earthquakes
 
 ## Description
 
-Showing Recent Earthquakesfrom past hour using publicly available geoJSON data from USGS
+Showing Recent Earthquakes from past hour using publicly available geoJSON data from USGS
 
 ## Usage
 
