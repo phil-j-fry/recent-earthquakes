@@ -6,6 +6,8 @@ recent-earthquakes
 
 Showing Recent Earthquakes from past hour using publicly available geoJSON data from USGS
 
+https://phil-j-fry.github.io/recent-earthquakes/
+
 ## Usage
 
 Testing/playground purposes
